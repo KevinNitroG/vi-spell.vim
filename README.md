@@ -1,0 +1,2 @@
+- https://raw.githubusercontent.com/rockkhuya/DongDu/refs/heads/master/bin/data/VNsyl.txt
+- https://raw.githubusercontent.com/miendinh/VietnameseOCR/refs/heads/master/dict/vi_VN.dic

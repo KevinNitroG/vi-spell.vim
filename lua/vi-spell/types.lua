@@ -1,0 +1,3 @@
+---@class (exact) ViSpell.Opts
+---@field use_default? boolean
+---@field extra? table<string, string>
