@@ -15,21 +15,21 @@ I ... don't know
   -- lazy.lua
   ---@type LazySpec
   return {
-  	"KevinNitroG/vi-spell.vim",
-  	event = "VeryLazy",
-  	config = true,
+    "KevinNitroG/vi-spell.vim",
+    event = "VeryLazy",
+    config = true,
   }
   ```
 - Default opts
   ```lua
   return {
-  	toggle = {
-  		filetypes = {
-  			"markdown",
-  			"text",
-  		},
-  		add = true,
-  	},
+    toggle = {
+      filetypes = {
+        "markdown",
+        "text",
+      },
+      add = true,
+    },
   }
   ```
 
