@@ -1,0 +1,27 @@
+name: Update Spell
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 0"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Install vim
+        uses: rhysd/action-setup-vim@v1
+
+      - name: Build
+        run: .scripts/build.sh
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: spell/vi
+          message: "feat: update spell"
+          committer_name: GitHub Actions
+          committer_email: 41898282+github-actions[bot]@users.noreply.github.com
