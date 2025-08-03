@@ -9,19 +9,18 @@ list=(
   # 'https://raw.githubusercontent.com/miendinh/VietnameseOCR/refs/heads/master/dict/vi_VN.dic'
 )
 
-tmpdir=$(mktemp -d)
-merged_file="merged.dict"
+TMPFILE=$(mktemp)
+TMPFILE_SORTED=$(mktemp)
+trap 'rm -f "$TMPFILE" "$TMPFILE_SORTED"' EXIT INT HUP TERM
 
 for url in "${list[@]}"; do
-  curl -fsSL "$url" >>"$tmpdir/vi.dic"
+  curl -fsSL "$url" >>"$TMPFILE"
 done
 
 wait
 
-sort "$tmpdir/vi.dic" | uniq >"$merged_file"
+sort "$TMPFILE" | uniq >"$TMPFILE_SORTED"
 
 mkdir -p 'spell'
 
-vim -u NONE -e -c "mkspell! spell/vi ${merged_file}" -c q
-
-rm -rf "$tmpdir"
+vim -u NONE -e -c "mkspell! spell/vi ${TMPFILE_SORTED}" -c q
